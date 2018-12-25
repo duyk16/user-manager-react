@@ -17,10 +17,12 @@ class App extends Component {
   }
 
   searchUsers(event) {
-    let keyword = event.target.value
+    let keyword = event.target.value.toLowerCase()
     this.setState({
       userData: Data.filter((item) => {
-        return item.name.indexOf(keyword) >= 0
+        // Find user by Name or Phone
+        let name = item.name.toLowerCase();
+        return (item.name.indexOf(keyword) >= 0 || item.phone.indexOf(keyword) >= 0)
       })
     })
   }
