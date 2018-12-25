@@ -8,10 +8,10 @@ export default class TableDataRow extends Component {
   }
 
   render() {
-    const { user, index } = this.props
+    const { user, order } = this.props
     return (
       <tr>
-        <th scope="row">{index + 1}</th>
+        <th scope="row">{order + 1}</th>
         <td>{user.name}</td>
         <td>{user.phone}</td>
         <td>{this.permissionName(user.permission)}</td>                

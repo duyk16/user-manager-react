@@ -18,7 +18,7 @@ export default class TableData extends Component {
           </thead>
           <tbody>
             {users.map((user, key) => {
-              return <TableDataRow user={user} key={key} index={key}/>
+              return <TableDataRow user={user} key={key} order={key}/>
             })}
           </tbody>
         </table>

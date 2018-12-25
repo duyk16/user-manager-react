@@ -14,6 +14,7 @@ class App extends Component {
       userData: Data,
     }
     this.searchUsers = this.searchUsers.bind(this)
+    this.createNewUser = this.createNewUser.bind(this)
   }
 
   searchUsers(event) {
@@ -21,14 +22,24 @@ class App extends Component {
     this.setState({
       userData: Data.filter((item) => {
         // Find user by Name or Phone
-        let name = item.name.toLowerCase();
-        return (item.name.indexOf(keyword) >= 0 || item.phone.indexOf(keyword) >= 0)
+        return (item.name.toLowerCase().indexOf(keyword) >= 0 || item.phone.indexOf(keyword) >= 0)
       })
     })
   }
 
+  createNewUser(newUser) {
+    this.setState({
+      newUser: newUser
+    })
+    let item = this.state.userData
+    item.push(newUser)
+    // this.setState({
+    //   userData: this.state.userData.push(newUser)
+    // })
+    console.log(item);
+  }
+
   render() {
-    console.log(this.state.userData)
     return (
       <div>
         <Header />
@@ -39,7 +50,7 @@ class App extends Component {
             </div>
             <div className="col-3">
               <Search searchUsers={this.searchUsers}/>
-              <AddUser />
+              <AddUser createNewUser={this.createNewUser}/>
             </div>
           </div>
         </div>
