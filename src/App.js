@@ -39,8 +39,9 @@ class App extends Component {
 
   searchUsers(event) {
     let keyword = event.target.value.toLowerCase()
+    let userData = JSON.parse(localStorage.getItem('userData'))
     this.setState({
-      userData: Data.filter((item) => {
+      userData: userData.filter((item) => {
 
         // Find user by Name or Phone
         return (item.name.toLowerCase().indexOf(keyword) >= 0 || item.phone.indexOf(keyword) >= 0)
