@@ -24,6 +24,7 @@ export default class TableData extends Component {
                   key={key}
                   order={key}
                   editUser={this.props.editUser}
+                  deleteUser={this.props.deleteUser}
                 />
               )
             })}

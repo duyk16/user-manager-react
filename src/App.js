@@ -19,7 +19,8 @@ class App extends Component {
     this.createNewUser  = this.createNewUser.bind(this);
     this.editUser       = this.editUser.bind(this);
     this.cancelEditUser = this.cancelEditUser.bind(this);
-    this.updateEditUser = this.updateEditUser.bind(this)
+    this.updateEditUser = this.updateEditUser.bind(this);
+    this.deleteUser     = this.deleteUser.bind(this)
 
   }
 
@@ -73,6 +74,17 @@ class App extends Component {
     })
   }
 
+  deleteUser(userId) {
+    const userIndex = this.state.userData.findIndex((item) => item.id == userId)
+    const userData = this.state.userData
+    this.setState({
+      userData: [
+        ...userData.slice(0, userIndex),
+        ...userData.slice(userIndex + 1)
+      ]
+    });
+  }
+
   render() {
 
     return (
@@ -93,7 +105,11 @@ class App extends Component {
               
             </div>
             <div className="col-9">
-              <TableData users={this.state.userData} editUser={this.editUser} />
+              <TableData 
+                users={this.state.userData}
+                editUser={this.editUser}
+                deleteUser={this.deleteUser} 
+              />
             </div>
           </div>
         </div>

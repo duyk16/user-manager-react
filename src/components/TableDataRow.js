@@ -4,6 +4,7 @@ export default class TableDataRow extends Component {
   constructor(props, context) {
     super(props, context);
     this.onClickEditUser = this.onClickEditUser.bind(this);
+    this.onClickDeleteUser = this.onClickDeleteUser.bind(this);
   }
   
   
@@ -16,6 +17,10 @@ export default class TableDataRow extends Component {
   onClickEditUser() {
     this.props.editUser(this.props.user.id)
   }
+  onClickDeleteUser() {
+    this.props.deleteUser(this.props.user.id)
+  }
+
   render() {
     const { user, order } = this.props
     const permissionStyle = 
@@ -29,7 +34,7 @@ export default class TableDataRow extends Component {
         <td style={permissionStyle}>{this.permissionName(user.permission)}</td>                
         <td>
           <button className="btn btn-info" onClick={this.onClickEditUser}><i className="fa fa-edit" /> Edit</button>
-          <button className="btn btn-danger"><i className="fa fa-trash-o" /> Delete</button>
+          <button className="btn btn-danger" onClick={this.onClickDeleteUser}><i className="fa fa-trash-o" /> Delete</button>
         </td>
       </tr>
 
