@@ -6,7 +6,7 @@ export default class Header extends Component {
       <div>
         <div className="jumbotron jumbotron-fluid">
           <div className="container">
-            <h1 className="display-4 text-center">Quản lý thành viên với React</h1>
+            <h1 className="display-4 text-center">User manager App with React JS</h1>
             <hr className="my-4" />
           </div>
         </div>

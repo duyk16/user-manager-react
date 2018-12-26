@@ -88,50 +88,5 @@
     "email": "peckhuffman@exotechno.com",
     "phone": "+1 (919) 597-2993",
     "permission": 3
-  },
-  {
-    "id": "5c223a1abf1a1ce3430fabfe",
-    "index": 10,
-    "name": "Carolina Hays",
-    "gender": "female",
-    "email": "carolinahays@exotechno.com",
-    "phone": "+1 (889) 455-3254",
-    "permission": 3
-  },
-  {
-    "id": "5c223a1ae8112070738e6f4d",
-    "index": 11,
-    "name": "Wolfe Simmons",
-    "gender": "male",
-    "email": "wolfesimmons@exotechno.com",
-    "phone": "+1 (879) 578-3052",
-    "permission": 3
-  },
-  {
-    "id": "5c223a1a52a5d828510b4f60",
-    "index": 12,
-    "name": "Jami Salinas",
-    "gender": "female",
-    "email": "jamisalinas@exotechno.com",
-    "phone": "+1 (910) 544-3199",
-    "permission": 3
-  },
-  {
-    "id": "5c223a1af79fdc5fb45b891c",
-    "index": 13,
-    "name": "Chandler Castro",
-    "gender": "male",
-    "email": "chandlercastro@exotechno.com",
-    "phone": "+1 (988) 558-2228",
-    "permission": 3
-  },
-  {
-    "id": "5c223a1aae53a1db8f161793",
-    "index": 14,
-    "name": "Flora Bennett",
-    "gender": "female",
-    "email": "florabennett@exotechno.com",
-    "phone": "+1 (985) 576-3007",
-    "permission": 3
   }
 ]
