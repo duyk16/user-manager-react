@@ -12,7 +12,7 @@ class App extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      userData: Data,
+      userData: [],
       editUser: {user: null, display: false}
     }
     this.searchUsers    = this.searchUsers.bind(this);
@@ -24,10 +24,24 @@ class App extends Component {
 
   }
 
+  
+  componentWillMount() {
+    // Check localStorage
+    if (!localStorage.getItem('userData')) {
+      localStorage.setItem('userData', JSON.stringify(Data))
+    }
+    let data = localStorage.getItem('userData')
+    this.setState({
+      userData: JSON.parse(data)
+    });
+  }
+  
+
   searchUsers(event) {
     let keyword = event.target.value.toLowerCase()
     this.setState({
       userData: Data.filter((item) => {
+
         // Find user by Name or Phone
         return (item.name.toLowerCase().indexOf(keyword) >= 0 || item.phone.indexOf(keyword) >= 0)
       })
@@ -36,16 +50,15 @@ class App extends Component {
 
   createNewUser(newUser) {
     // Parse permisstion to number
-    let data = this.state.userData
+    let newData = this.state.userData
     newUser.permission = parseInt(newUser.permission)
-    data.push(newUser)
+    newData.push(newUser)
     this.setState({
-      userData: data
+      userData: newData
     });
-    // this.setState({
-    //   userData: this.state.userData.push(newUser)
-    // })
-    console.log(data);
+
+    // Save to local storage
+    localStorage.setItem('userData', JSON.stringify(newData))
   }
 
   editUser(userId) {
@@ -62,27 +75,29 @@ class App extends Component {
   }
 
   updateEditUser(user) {
-    const userIndex = this.state.userData.findIndex((item) => item.id == user.id)
-    user = {...this.state.userData[userIndex], ...user}
+    const userIndex = this.state.userData.findIndex((item) => item.id === user.id)
+    user = {...this.state.userData[userIndex], ...user} // update data user
     const newData = this.state.userData
-    newData[userIndex] = {...user};
+    newData[userIndex] = {...user}; // update edited user to data
     this.setState({
       userData: newData
     })
+    // Save to local storage
+    localStorage.setItem('userData', JSON.stringify(newData))
+    
+    // Hide edit form
     this.setState({
       editUser: { ...this.state.editUser, display: false}
     })
   }
 
   deleteUser(userId) {
-    const userIndex = this.state.userData.findIndex((item) => item.id == userId)
-    const userData = this.state.userData
+    const newData = this.state.userData.filter((item) => item.id !== userId)
     this.setState({
-      userData: [
-        ...userData.slice(0, userIndex),
-        ...userData.slice(userIndex + 1)
-      ]
+      userData: newData
     });
+    // Save to local storage
+    localStorage.setItem('userData', JSON.stringify(newData))
   }
 
   render() {
